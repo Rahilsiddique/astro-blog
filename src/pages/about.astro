@@ -1,8 +1,6 @@
 ---
-import '../styles/global.css'
-
+import BaseLayout from '../layout/BaseLayout.astro'
 const pageTitle: string = "About Me"
-
 const identity = {
     firstName: 'Rahil',
     country: 'India',
@@ -10,19 +8,11 @@ const identity = {
     hobbies: ['coding','programming','laying'],
     skills: ['html','css','js','ts','astro']
 }
-
 const skillColor: string = 'navy'
 const fontWeight: string = 'bold'
 const textTransform: string = 'uppercase'
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
+<BaseLayout pageTitle={pageTitle}>
         <style define:vars={{skillColor,fontWeight,textTransform}}>
             h1{
                 color: purple;
@@ -42,20 +32,16 @@ const textTransform: string = 'uppercase'
                 display: flex;
                 gap: 1rem;
             }
-        </style>
-	</head>
-	<body>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/blog">Blog</a>
-		<h1>hello, my name is {identity.firstName}</h1>
-        <p>I'm a {identity.occupation} from {identity.country}</p>
-        <p>few of my hobbies {identity.hobbies.map(e => (<ul><li>{e}</li></ul>))}</p>
-        <h3>my skills are:</h3>
-        <div class="skill-container">
-            {identity.skills.map(e => (<span class="skill">{e+" "}</span>))}
-        </div>
-	</body>
-</html>
+            </style>
+            <h1>hello, my name is {identity.firstName}</h1>
+            <p>I'm a {identity.occupation} from {identity.country}</p>
+            <p>few of my hobbies {identity.hobbies.map(e => (<ul><li>{e}</li></ul>))}</p>
+            <h3>my skills are:</h3>
+            <div class="skill-container">
+                {identity.skills.map(e => (<span class="skill">{e+" "}</span>))}
+            </div>
+</BaseLayout>
+
+
 
 
